@@ -9,8 +9,37 @@
   <body>
     <h1 id="header"></h1>
 
-    <script>var e = "Hello world";
-document.querySelector("#header").innerHTML = e;
-console.log(e);</script>
+    <script>var _loopIt = 0;
+var t = Object.defineProperty;
+var n = (o, e) => t(o, "name", {
+  value: e,
+  configurable: !0
+});
+var r = "Hello world";
+document.querySelector("#header").innerHTML = r;
+console.log(r);
+var l = ["apple", "mango", "banana"];
+console.log(l);
+for (let o = 0; o < l.length; o++) {
+  if (_loopIt++ > 1500) {
+    global.infiniteLoopError = new RangeError('Potential infinite loop: exceeded ' + 1500 + ' iterations.');
+    throw global.infiniteLoopError;
+  }
+  console.log(l[o]);
+}
+function s() {
+  var _loopIt2 = 0;
+  let o = 0;
+  for (let e = 1; e <= 100; e++) {
+    if (_loopIt2++ > 1500) {
+      global.infiniteLoopError = new RangeError('Potential infinite loop: exceeded ' + 1500 + ' iterations.');
+      throw global.infiniteLoopError;
+    }
+    o += e;
+  }
+  return o;
+}
+n(s, "sumNumbers");
+console.log(s());</script>
   </body>
 </html>
